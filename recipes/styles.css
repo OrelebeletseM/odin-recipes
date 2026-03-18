@@ -1,0 +1,132 @@
+/* styles.css - Main stylesheet for Odin Recipes */
+
+/* Universal selector - applies to everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Type selectors - style all elements of this type */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f5eb;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    color: #8b4513;  /* Saddle brown color */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    border-bottom: 3px solid #d4a373;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #a0522d;  /* Sienna color */
+    margin: 25px 0 15px 0;
+    font-size: 1.8em;
+}
+
+h3 {
+    color: #b95c2e;
+    margin: 20px 0 10px 0;
+    font-size: 1.4em;
+}
+
+/* Image styling */
+img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Link styling */
+a {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #d2691e;
+    text-decoration: underline;
+}
+
+/* List styling */
+ul, ol {
+    margin: 15px 0 20px 30px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Class selectors - for specific elements */
+.recipe-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.home-link {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 15px;
+    background-color: #8b4513;
+    color: white;
+    border-radius: 5px;
+}
+
+.home-link:hover {
+    background-color: #a0522d;
+    text-decoration: none;
+    color: white;
+}
+
+/* ID selector - for unique elements */
+#recipe-list {
+    list-style-type: none;
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+#recipe-list li {
+    margin: 15px 0;
+    text-align: center;
+}
+
+#recipe-list a {
+    display: block;
+    padding: 15px;
+    background-color: #f0e6d8;
+    border-radius: 8px;
+    font-size: 1.2em;
+    transition: transform 0.2s;
+}
+
+#recipe-list a:hover {
+    background-color: #e6d5b8;
+    transform: scale(1.05);
+}
+
+/* Descendant combinator example */
+.recipe-card p {
+    color: #555;
+    font-style: italic;
+}
+
+/* Chaining selectors example */
+h2.ingredients-header {
+    border-left: 4px solid #d4a373;
+    padding-left: 10px;
+}
