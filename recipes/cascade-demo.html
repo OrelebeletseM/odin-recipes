@@ -16,6 +16,301 @@
     <a href="index.html" class="home-link">← Back to Home</a>
     
     <h1>CSS Cascade & Specificity Demo</h1>
+    <!-- INHERITANCE DEMO -->
+<div class="demo-section">
+    <h2>📋 Inheritance Demo</h2>
+    <p>Typography properties (color, font-family) are typically inherited. Border and padding are NOT inherited.</p>
+    
+    <!-- Parent element with styles -->
+    <div id="inheritance-parent" style="color: #2c5f2d; font-family: Georgia, serif; border: 3px solid #97bc62; padding: 15px;">
+        <p>This paragraph is INSIDE the parent div.</p>
+        <p>It inherits the <strong>color</strong> (green) and <strong>font-family</strong> (Georgia) from its parent.</p>
+        <p>But notice: It does NOT inherit the <strong>border</strong> or <strong>padding</strong>!</p>
+        
+        <div class="child-specific">
+            <p>This paragraph has its own class - it WON'T inherit the parent's color because it's directly targeted:</p>
+        </div>
+    </div>
+    
+    <p>This paragraph is OUTSIDE the parent div - it doesn't inherit anything.</p>
+    
+    <style>
+        /* This directly targets elements - overrides inheritance */
+        .child-specific {
+            color: #8b4513;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    </div>
+
+    <!-- SPECIFICITY HIERARCHY DEMO -->
+<div class="demo-section">
+    <h2>⚖️ Specificity Hierarchy Demo</h2>
+    <p>See how different selectors compete:</p>
+    
+    <!-- Test element with multiple identifiers -->
+    <div id="specificity-demo" class="demo-box highlight" style="border: 2px solid black;">
+        <p>This element has:</p>
+        <ul>
+            <li>ID: <code>#specificity-demo</code> (specificity: 100)</li>
+            <li>Classes: <code>.demo-box</code> and <code>.highlight</code> (specificity: 20 total)</li>
+            <li>Inline style: <code>style="border: 2px solid black;"</code> (specificity: 1000 for border property)</li>
+        </ul>
+    </div>
+    
+    <p>Let's see which rules win:</p>
+    
+    <!-- Multiple paragraphs to test specificity -->
+    <div class="test-area">
+        <p class="test" id="test1">Paragraph 1: class only</p>
+        <p class="test" id="test2">Paragraph 2: class + ID</p>
+        <p class="test special" id="test3">Paragraph 3: two classes + ID</p>
+    </div>
+    
+    <style>
+        /* Rule 1: Type selector (specificity: 1) */
+        p {
+            color: black;
+            font-size: 16px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        
+        /* Rule 2: Class selector (specificity: 10) */
+        .test {
+            color: blue;
+            border-left: 3px solid blue;
+        }
+        
+        /* Rule 3: Two classes (specificity: 20) */
+        .test.special {
+            color: purple;
+            border-left: 3px solid purple;
+            background-color: #f0e6ff;
+        }
+        
+        /* Rule 4: ID selector (specificity: 100) */
+        #test1 {
+            color: green;
+            border-left: 3px solid green;
+            font-weight: bold;
+        }
+        
+        /* Rule 5: ID + class (specificity: 110) */
+        #test2.test {
+            color: orange;
+            border-left: 3px solid orange;
+            background-color: #fff3e0;
+        }
+        
+        /* Rule 6: ID + two classes (specificity: 120) */
+        #test3.test.special {
+            color: red;
+            border-left: 3px solid red;
+            background-color: #ffe6e6;
+            font-weight: bold;
+        }
+    </style>
+</div>
+
+    <!-- ID vs CLASS vs TYPE DEMO -->
+    <div class="demo-section">
+        <h2>🏆 ID vs Class vs Type Demo</h2>
+    
+        <div class="comparison">
+        <!-- Element with multiple selectors targeting it -->
+            <div id="comparison-element" class="comparison-item">
+                <p>This element is targeted by multiple rules. Which one wins?</p>
+                <ul>
+                    <li>Rule using type selector: <code>div { color: gray; }</code></li>
+                    <li>Rule using class selector: <code>.comparison-item { color: blue; }</code></li>
+                    <li>Rule using ID selector: <code>#comparison-element { color: green; }</code></li>
+                </ul>
+            </div>
+        </div>
+    
+    <style>
+        /* Type selector - lowest specificity */
+        div {
+            color: gray;
+            padding: 10px;
+        }
+        
+        /* Class selector - medium specificity */
+        .comparison-item {
+            color: blue;
+            border: 2px solid blue;
+        }
+        
+        /* ID selector - highest specificity */
+        #comparison-element {
+            color: green;
+            border: 3px solid green;
+            background-color: #e8f5e8;
+        }
+        
+        /* Note: The text will be GREEN because ID wins! */
+    </style>
+    </div>
+
+    <!-- COMBINATOR VS CHAINING DEMO -->
+    <div class="demo-section">
+        <h2>🔗 Combinator vs Chaining (Same Specificity)</h2>
+        <p>Both examples below use TWO class selectors - they have the SAME specificity value (20).</p>
+    
+        <div class="combinator-demo">
+            <h3>Descendant Combinator (space):</h3>
+            <pre>.container .text { color: blue; }</pre>
+            <div class="container">
+            <div class="text">This text is targeted by .container .text</div>
+        </div>
+    </div>
+    
+    <div class="chaining-demo">
+        <h3>Chaining (no space):</h3>
+        <pre>.container.text { color: red; }</pre>
+        <div class="container text">This div has BOTH classes - targeted by .container.text</div>
+    </div>
+    
+    <style>
+        /* Descendant combinator (space) - selects .text inside .container */
+        .container .text {
+            color: blue;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            margin: 10px 0;
+        }
+        
+        /* Chaining (no space) - selects element with BOTH classes */
+        .container.text {
+            color: red;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #ffebee;
+            border: 2px solid #ef5350;
+        }
+        
+        /* Both rules have specificity 20 - the LAST one defined wins if both apply */
+        /* But they apply to different elements! */
+    </style>
+    </div>
+
+    <!-- RULE ORDER DEMO -->
+    <div class="demo-section">
+        <h2>⏱️ Rule Order Demo - "Last One Wins"</h2>
+    
+        <div class="rule-order-demo">
+        <p class="warning important-message">This element has classes: "warning" and "important-message"</p>
+        <p>Both rules have the SAME specificity. Which color wins?</p>
+    </div>
+    
+    <style>
+        /* First rule for .warning */
+        .warning {
+            color: orange;
+            font-size: 18px;
+            padding: 10px;
+            border-left: 5px solid orange;
+        }
+        
+        /* Second rule for .important-message - defined LATER */
+        .important-message {
+            color: red;  /* This will WIN because it's last */
+            font-weight: bold;
+            border-left: 5px solid red;  /* This overrides the orange border */
+        }
+        
+        /* Key point: When specificity is equal, the LAST rule in the CSS wins! */
+    </style>
+    </div>
+
+    <!-- UNIVERSAL SELECTOR DEMO -->
+    <div class="demo-section">
+        <h2>🌐 Universal Selector (*) Demo</h2>
+        <p>The universal selector has NO specificity (0). Any other selector beats it.</p>
+    
+    <div class="universal-demo">
+        <h3>This heading is targeted by:</h3>
+        <ul>
+            <li>Universal selector: <code>* { color: purple; }</code></li>
+            <li>Type selector: <code>h3 { color: teal; }</code></li>
+        </ul>
+        <p>The teal color wins because type selector (specificity 1) beats universal (specificity 0).</p>
+    </div>
+    
+    <style>
+        /* Universal selector - specificity 0 */
+        * {
+            color: purple;  /* This gets overridden by any other selector */
+            font-family: Arial, sans-serif;  /* This applies everywhere (no conflict) */
+        }
+        
+        /* Type selector - specificity 1 - beats universal */
+        h3 {
+            color: teal;
+            text-decoration: underline;
+        }
+        
+        /* Class selector - specificity 10 - also beats universal */
+        .universal-demo {
+            background-color: #f5f5f5;
+            padding: 15px;
+        }
+    </style>
+    </div>
+
+    <!-- SPECIFICITY REFERENCE TABLE -->
+    <div class="demo-section">
+        <h2>📊 Specificity Reference</h2>
+    
+    <table style="width:100%; border-collapse: collapse;">
+        <tr style="background-color: #8b4513; color: white;">
+            <th style="padding: 10px;">Selector Type</th>
+            <th style="padding: 10px;">Example</th>
+            <th style="padding: 10px;">Specificity Value</th>
+        </tr>
+        <tr style="background-color: #f0f0f0;">
+            <td style="padding: 8px; border: 1px solid #ddd;">Universal</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>*</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">0</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;">Type/Element</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>div, p, h1</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">1</td>
+        </tr>
+        <tr style="background-color: #f0f0f0;">
+            <td style="padding: 8px; border: 1px solid #ddd;">Class</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>.class</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">10</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;">ID</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>#id</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">100</td>
+        </tr>
+        <tr style="background-color: #f0f0f0;">
+            <td style="padding: 8px; border: 1px solid #ddd;">Inline style</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>style="color: red;"</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">1000</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;">!important</td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><code>color: red !important;</code></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">∞ (wins everything)</td>
+        </tr>
+    </table>
+    
+    <h3>Specificity Calculation Examples:</h3>
+    <ul>
+        <li><code>#header</code> = 100</li>
+        <li><code>.nav .link</code> = 20 (10 + 10)</li>
+        <li><code>div p a</code> = 3 (1 + 1 + 1)</li>
+        <li><code>#header .nav a</code> = 111 (100 + 10 + 1)</li>
+        <li><code>.container .content p</code> = 21 (10 + 10 + 1)</li>
+    </ul>
+    </div>
     
     <div class="cascade-box" style="background-color: #ffe6f0;">
         <h2>Which styles apply?</h2>
