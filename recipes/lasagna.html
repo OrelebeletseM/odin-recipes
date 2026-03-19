@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+    <!-- SPECIFICITY DEMO SECTION -->
+    <div class="specificity-demo">
+        <p>This text shows default styles</p>
+        <p class="highlight">This text uses .highlight class</p>
+        <p id="special" class="highlight">This text uses #special ID + .highlight class</p>
+        <p class="highlight important-message">This text uses two classes</p>
+    </div>
+
+    <!-- Add this after the specificity demo section -->
+    <div class="combinator-demo">
+        <h3>Combinator vs Chaining Demo</h3>
+        <div class="special-text">This has class "special-text" inside combinator-demo</div>
+        <div class="combinator-demo special-text">This has BOTH classes (chained)!</div>
+    </div>
+
+
     <a href="../index.html" class="home-link">← Back to Home</a>
     
     <div class="recipe-card">

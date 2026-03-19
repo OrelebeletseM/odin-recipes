@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Recipes</title>
-    <!-- Link to external CSS-->
-     <link rel=""stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Odin Recipes</h1>
+    <!-- New parent div to demonstrate inheritance -->
+    <div id="page-header">
+        <h1>Odin Recipes</h1>
+        <p class="tagline">Delicious recipes from around the world</p>
+    </div>
+    
+    <!-- This paragraph is OUTSIDE the header - won't inherit -->
+    <p class="tagline">Browse our collection below:</p>
     
     <ul id="recipe-list">
         <li><a href="recipes/lasagna.html">Classic Lasagna</a></li>

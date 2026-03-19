@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Cascade Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Internal CSS - has higher specificity than external if same selector */
+        .cascade-box {
+            border: 3px dashed purple;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-link">← Back to Home</a>
+    
+    <h1>CSS Cascade & Specificity Demo</h1>
+    
+    <div class="cascade-box" style="background-color: #ffe6f0;">
+        <h2>Which styles apply?</h2>
+        <p>This box has:</p>
+        <ul>
+            <li>Class "cascade-box" (styled in internal &lt;style&gt; tag)</li>
+            <li>Inline style: background-color: #ffe6f0</li>
+        </ul>
+        <p><strong>Result:</strong> The inline style wins for background-color, but the border from internal CSS still applies!</p>
+    </div>
+    
+    <div class="specificity-table">
+        <h2>Specificity Hierarchy</h2>
+        <table>
+            <tr>
+                <th>Selector Type</th>
+                <th>Example</th>
+                <th>Specificity Value</th>
+            </tr>
+            <tr>
+                <td>Universal</td>
+                <td>*</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Type/Element</td>
+                <td>div, p, h1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Class/Pseudo-class</td>
+                <td>.class, :hover</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>#id</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Inline style</td>
+                <td>style=" "</td>
+                <td>1000</td>
+            </tr>
+            <tr>
+                <td>!important</td>
+                <td>property: value !important</td>
+                <td>∞ (wins everything)</td>
+            </tr>
+        </table>
+    </div>
+    
+    <style>
+        /* Internal CSS - notice order matters */
+        .specificity-table {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</body>
+</html>
