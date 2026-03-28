@@ -170,7 +170,8 @@ h2.ingredients-header {
 
 /* Class selector (specificity: 10) */
 .highlight {
-    background-color: #fff3cd;
+    background-color: yellow;
+    font-weight: bold;
     color: #856404 !important;  /* !important overrides everything - use sparingly! */
 }
 
